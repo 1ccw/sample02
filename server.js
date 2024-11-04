@@ -35,6 +35,7 @@ const db = mysql.createConnection({
     user: 'root',
     password: '123456',
     database: 'fingerprintDB',
+    port: 3306
 });
 
 // 데이터베이스 연결
@@ -67,11 +68,12 @@ app.post('/api/fingerprint', (req, res) => {
             return res.status(500).send({ status: 'error', message: '데이터베이스 연결 실패' });
         }
     // 클라이언트에 성공 응답을 보냅니다.
-    res.send({ status: 'success', id: results.insertID });
+    res.send({ status: 'success', id: results.insertId });
+    });
 });
 
 // 서버를 실행할 포트를 정의합니다.
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
