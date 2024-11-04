@@ -10,6 +10,20 @@ const path = require('path');
 // Express 애플리케이션을 생성합니다.
 const app = express();
 
+const htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server</title>
+</head>
+<body>
+    <h1>Server!</h1>
+    <p>This is a simple HTML page served by Express.</p>
+</body>
+</html>
+`;
 
 // CORS 설정 및 JSON 요청 본문을 파싱하기 위한 설정
 app.use(cors());
