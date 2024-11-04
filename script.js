@@ -57,3 +57,40 @@ let randomNumber = Math.floor(Math.random() * 500) + 1;
             document.getElementById('restart').style.display = 'none';
             document.getElementById('submitGuess').disabled = false;
         });
+
+// FingerprintJS 초기화
+FingerprintJS.load().then(fp => {
+    fp.get().then(result => {
+        // 지문 ID
+        const visitorId = result.visitorId;
+        console.log('Visitor ID:', visitorId);
+        
+        // 추가 정보 수집
+        const deviceData = {
+            userAgent: navigator.userAgent,
+            screen: {
+                width: window.screen.width,
+                height: window.screen.height
+            },
+            language: navigator.language,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            plugins: Array.from(navigator.plugins).map(plugin => plugin.name),
+        };
+
+        console.log('Device Data:', deviceData);
+        // 데이터 서버에 전송 또는 처리
+        // 서버에 데이터 전송 예시
+        fetch('YOUR_SERVER_ENDPOINT', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ visitorId, deviceData }),
+        })
+        .then(response => response.json())
+        .then(data => console.log('Data sent successfully:', data))
+        .catch((error) => console.error('Error sending data:', error));
+
+    });
+});
+
