@@ -4,6 +4,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 // Express 애플리케이션을 생성합니다.
 const app = express();
@@ -11,6 +12,14 @@ const app = express();
 // CORS 설정 및 JSON 요청 본문을 파싱하기 위한 설정
 app.use(cors());
 app.use(bodyParser.json());
+
+//정적 파일 제공 설정
+app.use(express.static('public'));
+
+// HTML 파일 제공하는 엔드포인트 설정
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+})
 
 // POST 요청을 처리하는 엔드포인트를 정의합니다.
 app.post('/api/fingerprint', (req, res) => {
