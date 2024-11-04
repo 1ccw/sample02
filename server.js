@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 
 // Mysql 데이터베이스 연결
 const db = mysql.createConnection({[
-    host: 'localhost':3000,
+    host: 'localhost',
     user: 'root',
     password: '123456',
     database: 'fingerprintDB',
