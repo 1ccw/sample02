@@ -25,6 +25,6 @@ app.post('/api/fingerprint', (req, res) => {
 
 // 서버를 실행할 포트를 정의합니다.
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
