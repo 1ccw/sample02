@@ -30,12 +30,12 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Mysql 데이터베이스 연결
-const db = mysql.createConnection({[
+const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '123456',
     database: 'fingerprintDB',
-]});
+});
 
 // 데이터베이스 연결
 db.connect((err) => {
