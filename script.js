@@ -80,7 +80,7 @@ FingerprintJS.load().then(fp => {
         console.log('Device Data:', deviceData);
         // 데이터 서버에 전송 또는 처리
         // 서버에 데이터 전송 예시
-        fetch('https://fc69-114-70-38-167.ngrok-free.app', {
+        fetch('https://e5dd-114-70-38-167.ngrok-free.app/api/fingerprint', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
